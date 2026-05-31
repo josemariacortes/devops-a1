@@ -11,5 +11,5 @@ def roll(amount:int, sides:int):
     return dice.roll(f'{amount}d{sides}')
 
 for idx, result in enumerate(roll(DICE_AMOUNT, DICE_SIDES)):
-    print(f'Lanzamiento {idx+1} número obtenido {result}')
+    print(f'Lanzamiento {idx+1} número obtenido {result}', flush=True)
     sleep(2)
