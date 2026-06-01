@@ -4,7 +4,7 @@ pipeline {
     environment {
         registry = "renfe1972/devops-a1"
         tag = "1.0"
-        registryCredentials = "jenkins"          // Credencial DockerHub
+        registryCredentials = "renfe1972"          // Credencial DockerHub
         repository = "https://github.com/josemariacortes/devops-a1.git"
         repositoryCredentials = "jenkins-token"  // Credencial GitHub
         project = "devops-a3"
