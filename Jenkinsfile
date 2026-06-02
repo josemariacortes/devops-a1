@@ -1,9 +1,5 @@
 pipeline {
     agent any
-
-    tools {
-        SonarRunnerInstallation 'sonar-scanner'
-    }
     
     environment {
         registry = "renfe1972/devops-a1"
@@ -36,13 +32,13 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    sh '''
-                        sonar-scanner \
+                    sh """
+                        \$SONAR_RUNNER_HOME/bin/sonar-scanner \
                         -Dsonar.projectKey=devops-a3 \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=http://localhost:9000 \
                         -Dsonar.login=$SONAR_TOKEN
-                    '''
+                    """
                 }
             }
         }
