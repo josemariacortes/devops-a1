@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     tools {
-        sonarQubeScanner 'sonar-scanner'
+        hudson.plugins.sonar.SonarRunnerInstallation 'sonar-scanner'
     }
-
+    
     environment {
         registry = "renfe1972/devops-a1"
         tag = "1.0"
