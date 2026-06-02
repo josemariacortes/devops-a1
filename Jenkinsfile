@@ -1,12 +1,16 @@
 pipeline {
     agent any
 
+    tools {
+        sonarQubeScanner 'sonar-scanner'
+    }
+
     environment {
         registry = "renfe1972/devops-a1"
         tag = "1.0"
-        registryCredentials = "dockerhub"          // Credencial DockerHub
+        registryCredentials = "dockerhub"
         repository = "https://github.com/josemariacortes/devops-a1.git"
-        repositoryCredentials = "jenkins-token"  // Credencial GitHub
+        repositoryCredentials = "jenkins-token"
         project = "devops-a3"
     }
 
