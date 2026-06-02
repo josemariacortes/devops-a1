@@ -26,13 +26,19 @@ pipeline {
             }
         }
 
-        stage('Static Analysis - SonarQube') {
-            environment {
-                SONAR_TOKEN = credentials('SONAR_TOKEN')
+        stage('Code Analysis SonarQube'){
+            environment{
+                scannerHome= tool 'Sonar'
             }
-            steps {
-                withSonarQubeEnv('sonarqube') {
-                    sh "env | sort"
+            steps{
+                script{
+                    withSonarQubeEnv('Sonar'){
+                        sh "${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=$project \
+                        -Dsonar.projectName=$project \
+                        -Dsonar.projectVersion=$tag \
+                        -Dsonar.sources=./"
+                    }
                 }
             }
         }
