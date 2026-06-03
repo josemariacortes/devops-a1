@@ -26,23 +26,6 @@ pipeline {
             }
         }
 
-        stage('Code Analysis SonarQube'){
-            environment{
-                scannerHome= tool 'Sonar'
-            }
-            steps{
-                script{
-                    withSonarQubeEnv('Sonar'){
-                        sh "${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectKey=$project \
-                        -Dsonar.projectName=$project \
-                        -Dsonar.projectVersion=$tag \
-                        -Dsonar.sources=./"
-                    }
-                }
-            }
-        }
-
         stage('Build Image') {
             steps {
                 script {
